@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     end
 
     def all_posts
-        @posts = Post.all
+        @posts = Post.all.order(created_at: :desc)
         render json: { data: @posts }, status: :ok     
     end
 

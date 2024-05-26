@@ -22,6 +22,19 @@ class AccountsController < ApplicationController
     end
   end
 
+  def top_creators
+    top_acc = Account
+      .left_joins(:posts)
+      .select('accounts.*, COUNT(posts.id) AS posts_count')
+      .group(:id)
+      .order('posts_count DESC')
+      .limit(10)
+
+    render json: top_acc, status: :ok
+  end
+
+
+
   private
 
   def account_params

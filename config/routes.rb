@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 
   resources :posts 
   get '/all_posts', to: 'posts#all_posts'
+  get '/top_creators', to: 'accounts#top_creators'
 end
